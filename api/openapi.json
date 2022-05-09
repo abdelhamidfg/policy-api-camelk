@@ -1,0 +1,210 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Policy API",
+        "version": "1.0.0",
+        "description": "Provide API to retrieve E-Policy of the customer belongs to",
+        "contact": {
+            "name": "Abdelhamid Soliman",
+            "url": "https://www.redhat.com",
+            "email": "asoliman@redhat.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "paths": {
+        "/policy": {
+            "summary": "Get Policy Information per customercustomer",
+            "description": "Get Policy Information per customer",
+            "get": {
+                "parameters": [
+                    {
+                        "examples": {
+                            "197705": {
+                                "value": 197705
+                            },
+                            "unknown": {
+                                "value": -1
+                            }
+                        },
+                        "name": "customer_id",
+                        "description": "customer_id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerPolicy"
+                                },
+                                "examples": {
+                                    "197705": {
+                                        "value": {
+                                            "policy": {
+                                                "policyNumber": "194-df5-6544",
+                                                "classDescription": "VIP Customer",
+                                                "effectiveDate": "2018-01-17",
+                                                "expiryDate": "2018-01-17",
+                                                "insName": "Car insurance"
+                                            },
+                                            "customer": {
+                                                "fullName": "John Smith",
+                                                "addressLine1": "123 spring street",
+                                                "addressLine2": "NY",
+                                                "addressline3": "USA",
+                                                "emailAddress": "john@gmail.com"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful reponse with policy information"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "unknown": {
+                                        "value": "\"customer not found\""
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Customer ID not found"
+                    }
+                },
+                "deprecated": false,
+                "operationId": "getPolicyPerCustomer",
+                "summary": "Get Policy per customer Id",
+                "description": "Get Policy per customer Id"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Policy": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "policyNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "classDescription": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "effectiveDate": {
+                        "format": "date",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "expiryDate": {
+                        "format": "date",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "insName": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Customer": {
+                "description": "Custoemr information",
+                "type": "object",
+                "properties": {
+                    "fullName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addressLine1": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addressLine2": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addressline3": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "emailAddress": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "CustomerPolicy": {
+                "description": "",
+                "required": [
+                    "policy",
+                    "customer"
+                ],
+                "type": "object",
+                "properties": {
+                    "policy": {
+                        "$ref": "#/components/schemas/Policy",
+                        "description": "Policy Information"
+                    },
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer",
+                        "description": "Customer Information"
+                    }
+                },
+                "example": {
+                    "policy": {
+                        "policyNumber": "194-df5-6544",
+                        "classDescription": "VIP Customer",
+                        "effectiveDate": "2018-01-17",
+                        "expiryDate": "2018-01-17",
+                        "insName": "Car insurance"
+                    },
+                    "customer": {
+                        "fullName": "John Smith",
+                        "addressLine1": "123 spring street",
+                        "addressLine2": "NY",
+                        "addressline3": "USA",
+                        "emailAddress": "john@gmail.com"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "security": {
+                "type": "apiKey",
+                "name": "apiKey",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "security": [
+            ]
+        }
+    ],
+    "tags": [
+        {
+            "name": "Insurance",
+            "description": ""
+        },
+        {
+            "name": "Policy",
+            "description": ""
+        }
+    ]
+}

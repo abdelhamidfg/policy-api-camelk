@@ -1,0 +1,16 @@
+{
+    "policy": {
+        "policyNumber": "194-df5-6544",
+        "classDescription": "VIP Customer",
+        "effectiveDate": "2018-01-17",
+        "expiryDate": "2018-01-17",
+        "insName": "Car insurance"
+    },
+    "customer": {
+        "fullName": "John Smith",
+        "addressLine1": "123 spring street",
+        "addressLine2": "NY",
+        "addressline3": "USA",
+        "emailAddress": "john@gmail.com"
+    }
+}

@@ -1,0 +1,18 @@
+<root>
+    <policy>
+    <policyNumber>194-df5-6544</policyNumber>
+    <classDescription>VIP Customer</classDescription>
+    <effectiveDate>2018-01-17</effectiveDate>
+    <expiryDate>2018-01-17</expiryDate>
+    <insName>Car insurance</insName>
+    </policy>
+    <customer>
+    <emailAddress>john@gmail.com</emailAddress>
+    <firstName>John</firstName>
+    <lastName>Smith</lastName>
+    <country>USA</country>
+    <street>la</street>
+    <city>NY</city>
+    <postcode>11425</postcode>
+    </customer>
+    </root>
